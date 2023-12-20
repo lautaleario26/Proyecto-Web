@@ -1,0 +1,171 @@
+{% load static %}
+{% load colaborador_tags %}
+<!doctype html>
+<html lang="es-ar">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Informatorio</title>
+  <link rel='stylesheet' href='css/woocommerce-layout.css' type='text/css' media='all'/>
+  <link rel='stylesheet' href='css/woocommerce-smallscreen.css' type='text/css' media='only screen and (max-width: 768px)'/>
+  <link rel='stylesheet' href='css/woocommerce.css' type='text/css' media='all'/>
+  <link rel='stylesheet' href='css/font-awesome.min.css' type='text/css' media='all'/>
+  <link rel='stylesheet' href='style.css' type='text/css' media='all'/>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500,700%7CHerr+Von+Muellerhoff:400,500,700%7CQuattrocento+Sans:400,500,700' type='text/css' media='all'/>
+  <link rel='stylesheet' href='css/easy-responsive-shortcodes.css' type='text/css' media='all'/>
+  </head>
+
+<body>
+  <header>
+    <a class="flex-sm-fill text-sm-center nav-link active" href="#">
+      <img src="{% static/ 'img/medio1.jpg' %},"style= "max-width: 300px; margin: 30ps;">
+    </a>
+
+    <nav class="nav nav-pills flex-colum flex-sm-row">
+      <a class="flex-sm-fill text-sm-center nav-link active" href="#">Active</a>
+      <a class="flex-sm-fill text-sm-center nav-link" href="#"> Longer nav link</a>
+      <a class="flex-sm-fill text-sm-center nav-link" href="#" >Link</a>
+      <a class="flex-sm-fill text-sm-center nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </nav>
+  </header>
+
+    <ul class="nav-links">
+      <li><a href="{% url 'index' %}">Inicio</a></li>
+      <li><a href="#">Acerca de nosotros</a></li>
+      <li><a href="{% url 'apps.posts:posts' %}">Posts</a></li>
+      <li><a href="{% url 'apps.contacto:contacto'%}">Contacto</a></li>
+      <div class="dropdown">
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'apps.usuario:logout' %}">{{ user.username }}Logout</a></li>
+        {% else %}
+            <li><a href="{% url 'apps.usuario:login' %}">Login</a></li> 
+        {% endif %}
+            <div class="dropdown-content">    
+              <table>
+                <tr>
+                  {% if user.is_superuser or request.user|has_group:"Colaborador" %}
+                   <td><a href="{% url 'apps.usuario:usuario_list' %}">Lista de usuarios</a></td>
+                  {% endif %}
+                </tr>
+                <tr>
+                    <td><a href="{% url 'apps.posts:categoria_list' %}">Lista de Categorias</a></td>
+                </tr> 
+               </table>
+            </div>     
+        </div> 
+    </ul>
+</nav>
+<div id="content" class="site-content">
+  <div id="primary" class="content-area column full">
+    <main id="main" class="site-main">
+    <div class="grid portfoliogrid">
+    
+      <article class="hentry">
+      <header class="entry-header">
+      <div class="entry-thumbnail">
+        <a href="portfolio-item.html"><img src="http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/15/2015/09/30162427/p1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="p1"/></a>
+      </div>
+      <h2 class="entry-title"><a href="portfolio-item.html" rel="bookmark">Arboles</a></h2>
+      <a class='portfoliotype' href='portfolio-category.html'>summer</a>
+      <a class='portfoliotype' href='portfolio-category.html'>woman</a>
+      <a class='portfoliotype' href='portfolio-category.html'>yellow</a>
+      </header>
+      </article>
+      
+      <article class="hentry">
+      <header class="entry-header">
+      <div class="entry-thumbnail">
+        <a href="portfolio-item.html"><img src="http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/15/2015/09/30160348/p5.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="p1"/></a>
+      </div>
+      <h2 class="entry-title"><a href="portfolio-item.html" rel="bookmark">Agua</a></h2>
+      <a class='portfoliotype' href='portfolio-category.html'>hat</a>
+      <a class='portfoliotype' href='portfolio-category.html'>woman</a>
+      <a class='portfoliotype' href='portfolio-category.html'>yellow</a>
+      </header>
+      </article>
+      
+      <article class="hentry">
+      <header class="entry-header">
+      <div class="entry-thumbnail">
+        <a href="portfolio-item.html"><img src="http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/15/2015/09/30160151/p3.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="p1"/></a>
+      </div>
+      <h2 class="entry-title"><a href="portfolio-item.html" rel="bookmark">Bosques</a></h2>
+      <a class='portfoliotype' href='portfolio-category.html'>summer</a>
+      <a class='portfoliotype' href='portfolio-category.html'>woman</a>
+      <a class='portfoliotype' href='portfolio-category.html'>yellow</a>
+      </header>
+      </article>
+      
+      <article class="hentry">
+      <header class="entry-header">
+      <div class="entry-thumbnail">
+        <a href="portfolio-item.html"><img src="http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/15/2015/09/18160911/p6.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="p1"/></a>
+      </div>
+      <h2 class="entry-title"><a href="portfolio-item.html" rel="bookmark">Praderas</a></h2>
+      <a class='portfoliotype' href='portfolio-category.html'>pink</a>
+      <a class='portfoliotype' href='portfolio-category.html'>woman</a>
+      <a class='portfoliotype' href='portfolio-category.html'>yellow</a>
+      </header>
+      </article>
+      
+      <article class="hentry">
+      <header class="entry-header">
+      <div class="entry-thumbnail">
+        <a href="portfolio-item.html"><img src="http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/15/2015/09/15223245/p2.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="p1"/></a>
+      </div>
+      <h2 class="entry-title"><a href="portfolio-item.html" rel="bookmark">Montañas</a></h2>
+      <a class='portfoliotype' href='portfolio-category.html'>hat</a>
+      <a class='portfoliotype' href='portfolio-category.html'>summer</a>
+      <a class='portfoliotype' href='portfolio-category.html'>yellow</a>
+      </header>
+      </article>
+      
+      <article class="hentry">
+      <header class="entry-header">
+      <div class="entry-thumbnail">
+        <a href="portfolio-item.html"><img src="http://s3.amazonaws.com/caymandemo/wp-content/uploads/sites/15/2015/09/15222855/p7.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="p1"/></a>
+      </div>
+      <h2 class="entry-title"><a href="portfolio-item.html" rel="bookmark">Llanuras</a></h2>
+      <a class='portfoliotype' href='portfolio-category.html'>hat</a>
+      <a class='portfoliotype' href='portfolio-category.html'>woman</a>
+      <a class='portfoliotype' href='portfolio-category.html'>summer</a>
+      </header>
+      </article>
+      
+    </div>
+    <!-- .grid -->
+    
+    <nav class="pagination">
+    <span class="page-numbers current">1</span>
+    <a class="page-numbers" href="#">2</a>
+    <a class="next page-numbers" href="#">Next »</a>
+    </nav>
+    <br/>
+    
+    </main>
+    <!-- #main -->
+  </div>
+  <!-- #primary -->
+</div>
+<!-- #content -->
+</div>
+
+
+  <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+    <div class="container text-center">
+      <small>Copyright &copy; Your Website</small>
+    </div>
+    
+  </footer>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+  </script>
+</body>
+
+</html>
